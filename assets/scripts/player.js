@@ -1,9 +1,21 @@
 "use strict";
 //The api server response is stored in player as Json.
-const player= {
-'cells':new Array(9),
+// construction function
+const playerOne = {
+  id:1,
+  email:'3@d.com',
+  sign:'x'
 };
+const playerTwo = {
+  id:2,
+  email:'4@d.com',
+  sign:'o'
+};
+  //id:
+  //email :
+  //sign :
 
 module.exports = {
-  player,
+  playerOne,
+  playerTwo
 };
