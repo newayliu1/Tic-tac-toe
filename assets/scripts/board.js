@@ -6,7 +6,9 @@ const Board = function () {
 //set the sign to the player
 
 Board.prototype.boardUpdate = function (index, player) {
-  this.board[index]=player.sign;
+  if(!this.board[index]){
+    this.board[index]=player.sign;
+  }
 };
 
 module.exports = {
