@@ -1,7 +1,5 @@
 "use strict";
 //main files in the engine
-const player = require('./player');
-const board = require('./board');
 
 const combination = [[0,1,2],[3,4,5],[6,7,8],
                     [0,3,6],[1,4,7],[2,5,8],
@@ -29,9 +27,9 @@ const isWin = function (indexOfPlayer) {
 
 // return the player object
 
-const winner = function () {
-  let playerOneIndex = indexOfPlayer(board.board(), player.playerOne);
-  let playerTwoIndex = indexOfPlayer(board.board(), player.playerTwo);
+const winner = function (board, player) {
+  let playerOneIndex = indexOfPlayer(board, player.playerOne);
+  let playerTwoIndex = indexOfPlayer(board, player.playerTwo);
   if (isWin(playerOneIndex)){
     return player.playerOne;
   } else if (isWin(playerTwoIndex)) {
@@ -42,15 +40,14 @@ const winner = function () {
 
 //return true or false
 
-const isEnd = function () {
+const isEnd = function (board) {
   if (winner()) {
     return true;
-  } else if (board.board().includes("")) {
+  } else if (board.includes("")) {
     return false;
   }
   return true;
 };
-
 
 module.exports = {
   isEnd,
