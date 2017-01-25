@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags unless you know what you are doing -->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags unless you know what you are doing -->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
   <h1>Tic tac toe</h1>
   <section>
-    <button type="button" class="btn btn-primary btn-lg sign-up" data-toggle="modal" data-target="#signUp">
+    <button type="button" class="btn btn-primary btn-lg sign-up" data-toggle="modal" data-target="#signUp-form">
           Sign Up
         </button>
-    <button type="button" class="btn btn btn-success btn-lg sign-in" data-toggle="modal" data-target="#signIn">
+    <button type="button" class="btn btn btn-success btn-lg sign-in" data-toggle="modal" data-target="#signIn-form">
           Sign In
         </button>
     <button type="button" class="btn btn-warning btn-lg log-out">
           Log Out
         </button>
     <!--Sign up -->
-  <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="signUp-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
-    </div>
-    <div class="modal-body">
-          <label>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+          </div>
+          <div class="modal-body">
+            <label>
             EMAIL
             <input type="text" name='credentials[email]'>
           </label><br/>
-          <label>
+            <label>
             PASSWORD
             <input type = 'password' name='credentials[password]'>
           </label><br/>
-          <label>
+            <label>
             PASSWORD_CONFIRMATION
             <input type = 'password' name='credentials[password_confirmation]'>
           </label><br/>
-          <input type="submit" name="submit" value="Sign up!">
-    </div>
-  </div>
-</div>
+            <input type="submit" name="submit" value="Sign up!">
+          </div>
+        </div>
+      </div>
     </div>
 
-  <!-- Sign In -->
-  <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Sign In -->
+    <div class="modal fade" id="signIn-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-    </div>
-    <div class="modal-body">
-      <form>
-          <label>
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <label>
             EMAIL
             <input type="text" name='credentials[email]'>
-          </label>
-          <label>
+          </label><br/>
+              <label>
             PASSWORD
             <input type = 'password' name='credentials[password]'>
-          </label>
-          <input type="submit" name="submit" value="Sign in!">
-  </form>
-    </div>
-    </div>
-    </div>
+          </label><br/>
+              <input type="submit" name="submit" value="Sign in!">
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -94,4 +96,5 @@
     </div>
   </div>
 </body>
+
 </html>
