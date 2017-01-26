@@ -28,20 +28,16 @@ const isWin = function (indexOfPlayer) {
 // return the player object
 
 const winner = function (board, player) {
-  let playerOneIndex = indexOfPlayer(board, player.playerOne);
-  let playerTwoIndex = indexOfPlayer(board, player.playerTwo);
+  let playerOneIndex = indexOfPlayer(board, player);
   if (isWin(playerOneIndex)){
-    return player.playerOne;
-  } else if (isWin(playerTwoIndex)) {
-    return player.playerTwo;
+    return player;
   }
-  return console.log(playerOneIndex);
 };
 
 //return true or false
 
-const isEnd = function (board) {
-  if (winner()) {
+const isEnd = function (board, player) {
+  if (winner(board, player)) {
     return true;
   } else if (board.includes("")) {
     return false;
