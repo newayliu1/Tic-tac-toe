@@ -12,22 +12,9 @@ $(() => {
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example');
 
-let game, currentPlayer, winner, gameEnd;
+let game, currentPlayer, winner, gameEnd = true;
 
-
-
-
-const gameStart = function() {
-  game = new board.Board();
-  currentPlayer = player.playerOne;
-  console.log(game.board);
-  console.log(currentPlayer);
-};
-
-
-$('#start-button').on('click', gameStart);
 //
-
 const switchPlayer = function() {
   if (currentPlayer === player.playerOne) {
     currentPlayer = player.playerTwo;
@@ -36,23 +23,32 @@ const switchPlayer = function() {
   }
 };
 
-const onClick = function(index) {
-  if (!game.board[index]) {
-    game.boardUpdate(index, currentPlayer);
-    winner = gameStatus.winner(game.board, currentPlayer);
-    gameEnd = gameStatus.isEnd(game.board, currentPlayer);
-    if (winner) {
-      console.log('currentPlayer.email');
-    } else if (gameEnd) {
-      console.log('draw');
-    }
-    switchPlayer();
+const unativeClick = function() {
+  if (gameEnd) {
+    $('.box').off('click');
   }
+};
+
+const onClick = function(index) {
+
+  game.boardUpdate(index, currentPlayer);
+  winner = gameStatus.winner(game.board, currentPlayer);
+  gameEnd = gameStatus.isEnd(game.board, currentPlayer);
+  console.log(gameEnd);
+  console.log(game.board);
+  if (winner) {
+    console.log('Congradulation');
+    $('.container').off('click');
+  } else if (gameEnd) {
+    console.log('Tie!!!!!!!!!!');
+  }
+  unativeClick ();
+  switchPlayer();
 };
 
 //event
 
-const event_index= function(event) {
+const event_index = function(event) {
 
   return parseInt(event.target.id);
 };
@@ -60,19 +56,30 @@ const event_index= function(event) {
 const click_event = function(event) {
   event.preventDefault();
   let index = event_index(event);
-  onClick(index);
-  $(event.target).text(currentPlayer.sign);
+  if (!game.board[index]) {
+    $(event.target).text(currentPlayer.sign);
+    onClick(index);
+  }
 };
+
 //
-  $("#0").on('click', click_event);
- $("#1").on('click', click_event);
-$("#2").on('click', click_event);
-$("#3").on('click', click_event);
-$("#4").on('click', click_event);
-$("#5").on('click', click_event);
-$("#6").on('click', click_event);
-$("#7").on('click', click_event);
-$("#8").on('click', click_event);
+const emptyBoard = function() {
+    $('.box').text('');
+    $('.box').on('click', click_event);
+};
+
+//
+const gameStart = function() {
+  if (gameEnd) {
+    game = new board.Board();
+    currentPlayer = player.playerOne;
+    emptyBoard();
+  }
+};
+
+
+$('#start-button').on('click', gameStart);
+
 
 
 // use require without a reference to ensure a file is bundled

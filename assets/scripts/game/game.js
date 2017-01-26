@@ -39,10 +39,8 @@ const winner = function (board, player) {
 const isEnd = function (board, player) {
   if (winner(board, player)) {
     return true;
-  } else if (board.includes("")) {
-    return false;
   }
-  return true;
+  return !board.includes("");
 };
 
 module.exports = {
