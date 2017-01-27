@@ -1,50 +1,77 @@
-"use strict";
-//main files in the engine
+'use strict';
 
-const combination = [[0,1,2],[3,4,5],[6,7,8],
-                    [0,3,6],[1,4,7],[2,5,8],
-                    [0,4,8], [2,4,6]];
+const gameStatus = require('./gameStatus');
+const player = require('./player');
+const board = require('./board');
 
-const indexOfPlayer = function (board, player) {
-  let result = [];
-  board.forEach((el,i) => {
-    if (el === player.sign){
-      result.push(i);
-    }
-  });
-  return result;
-};
 
-// checking the inputer player indexes matches to any combination.
-// if any of the elements in combination in which the indexes includes all
-//single elements.  some checking any, every check all
 
-const isWin = function (indexOfPlayer) {
-  return combination.some(function(el) {
-    return el.every((element) => indexOfPlayer.includes(element));
-  });
-};
+let game, currentPlayer, winner, gameEnd = true;
 
-// return the player object
-
-const winner = function (board, player) {
-  let playerOneIndex = indexOfPlayer(board, player);
-  if (isWin(playerOneIndex)){
-    return player;
+//
+const switchPlayer = function() {
+  if (currentPlayer === player.playerOne) {
+    currentPlayer = player.playerTwo;
+  } else {
+    currentPlayer = player.playerOne;
   }
 };
 
-//return true or false
-
-const isEnd = function (board, player) {
-  if (winner(board, player)) {
-    return true;
+const unativeClick = function() {
+  if (gameEnd) {
+    $('.box').off('click');
   }
-  return !board.includes("");
 };
+
+const onClick = function(index) {
+
+  game.boardUpdate(index, currentPlayer);
+  winner = gameStatus.winner(game.board, currentPlayer);
+  gameEnd = gameStatus.isEnd(game.board, currentPlayer);
+  if (winner) {
+    $('.result-display').text('Congradulation '+ winner.email);
+    $('.container').off('click');
+  } else if (gameEnd) {
+    $('.result-display').text('Tie!!!!!!!!!!');
+  }
+  unativeClick ();
+  switchPlayer();
+};
+
+//event
+
+const event_index = function(event) {
+
+  return parseInt(event.target.id);
+};
+
+
+const click_event = function(event) {
+  event.preventDefault();
+  let index = event_index(event);
+  if (!game.board[index]) {
+    $(event.target).text(currentPlayer.sign);
+    onClick(index);
+  }
+};
+
+//
+const emptyBoard = function() {
+    $('.box').text('');
+    $('.box').on('click', click_event);
+};
+
+//
+const gameStart = function(event) {
+  event.preventDefault();
+  if (gameEnd) {
+    game = new board.Board();
+    currentPlayer = player.playerOne;
+    emptyBoard();
+  }
+};
+
 
 module.exports = {
-  isEnd,
-  winner,
-  isWin,
+  gameStart,
 };
