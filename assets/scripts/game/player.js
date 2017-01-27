@@ -3,19 +3,15 @@
 // construction function
 let playerOne = {
   id:1,
-  email:'3@d.com',
-  sign:'x'
+  email: 'player one',
 };
 let playerTwo = {
   id:2,
   email: 'player two',
-  sign:'o'
 };
-  //id:
-  //email :
-  //sign :
+
 
 module.exports = {
   playerOne,
-  playerTwo
+  playerTwo,
 };
