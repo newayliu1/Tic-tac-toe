@@ -1,6 +1,6 @@
 'use strict';
 const config = require('../config');
-const store = require('../store');
+const player = require('../game/player');
 
 const signUp = function (data) {
   return $.ajax({
@@ -19,20 +19,52 @@ const signIn = function (data) {
 };
 const changePassword = function (data) {
   return $.ajax({
-    url: `${config.apiOrigin}/change-password/${store.user.id}`,
+    url: `${config.apiOrigin}/change-password/${player.playerOne.id}`,
     method: 'PATCH',
     headers: {
-      Authorization: `Token token=${store.user.token}`,
+      Authorization: `Token token=${player.playerOne.token}`,
     },
     data,
   });
 };
 const signOut = function () {
   return $.ajax({
-    url: `${config.apiOrigin}/sign-out/${store.user.id}`,
+    url: `${config.apiOrigin}/sign-out/${player.playerOne.id}`,
     method: 'DELETE',
     headers: {
-      Authorization: `Token token=${store.user.token}`,
+      Authorization: `Token token=${player.playerOne.token}`,
+    },
+  });
+};
+
+const addGame = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${player.playerOne.token}`,
+    },
+    data,
+  });
+};
+
+const updateCells = function (data,id) {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/${id}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${player.playerOne.token}`,
+    },
+    data,
+  });
+};
+
+const getGame = function (id) {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/${id}`,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${player.playerOne.token}`,
     },
   });
 };
@@ -42,4 +74,7 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
+  addGame,
+  updateCells,
+  getGame,
 };

@@ -21,6 +21,7 @@ const onSignIn = function (event) {
     event.preventDefault();
 
   let data = getFormFields(event.target);
+  console.log(data);
 
   api.signIn(data)
     .then((response) => {
@@ -69,6 +70,9 @@ const onSigningPlayer = function (event) {
   assignSign(event.target.id);
 };
 
+const game = require('../game/game_events');
+
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
@@ -76,6 +80,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut);
   $('#x').on('click', onSigningPlayer);
   $('#o').on('click', onSigningPlayer);
+  $('#start-button').on('click', game.gameStart);
 };
 module.exports = {
   addHandlers,

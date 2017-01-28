@@ -1,14 +1,21 @@
 "use strict";
-//board may set up the new game here
-const Board = function () {
-  this.board = new Array(9).fill("");
-};//get array from game
-//set the sign to the player
-
-Board.prototype.boardUpdate = function (index, player) {
-    this.board[index]=player.sign;
+//board save a new game
+let board = {
 };
 
+//patch_data save the formate of patch data
+let patch_data = function(index, sign, isEnd) {
+  return {
+    game: {
+      cell: {
+        index: index,
+        value: sign,
+      },
+      over: isEnd,
+    },
+  };
+};
 module.exports = {
-Board,
+  board,
+  patch_data
 };

@@ -6,8 +6,7 @@ let playerOne = {
   email: 'player one',
 };
 let playerTwo = {
-  id:2,
-  email: 'player two',
+  email: 'guess',
 };
 
 
