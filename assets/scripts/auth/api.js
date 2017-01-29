@@ -59,6 +59,17 @@ const updateCells = function (data,id) {
   });
 };
 
+const updateGame = function (data,id) {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/${id}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${player.playerOne.token}`,
+    },
+    data,
+  });
+};
+
 const getGame = function (id) {
   return $.ajax({
     url: `${config.apiOrigin}/games/${id}`,
@@ -77,4 +88,5 @@ module.exports = {
   addGame,
   updateCells,
   getGame,
+  updateGame,
 };

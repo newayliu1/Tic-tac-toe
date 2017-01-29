@@ -28,7 +28,7 @@ const onSignIn = function (event) {
       player.playerOne = response.user;
       return player.playerOne;
     })
-    .then(ui.success)
+    .then(ui.signInSuccess)
     .catch(ui.failure);
 
 };
@@ -44,43 +44,31 @@ const onChangePassword = function (event) {
 };
 const onSignOut = function (event) {
   event.preventDefault();
-
   api.signOut()
     .then(() => {
       delete player.playerOne;
       return player;
     })
-    .then(ui.success)
-    .catch(ui.failure)
-    ;
+    .then(ui.signOutSuccess)
+    .catch(ui.failure);
+    player.playerOne = {};
 };
 
-const assignSign = function (signValue) {
-  player.playerOne.sign = signValue;
-  if (signValue ==='x')
-  {
-    player.playerTwo.sign = 'o';
-  } else {
-    player.playerTwo.sign = 'x';
-  }
-};
 
-const onSigningPlayer = function (event) {
-  event.preventDefault();
-  assignSign(event.target.id);
-};
 
-const game = require('../game/game_events');
 
 
 const addHandlers = () => {
+  $('#sign-up').show();
+    $('#sign-in').show();
+    $('#board').hide();
+    $('#game-log').hide();
+    $('#sign-out').hide();
+    $('#change-password').hide();
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
-  $('#sign-out').on('submit', onSignOut);
-  $('#x').on('click', onSigningPlayer);
-  $('#o').on('click', onSigningPlayer);
-  $('#start-button').on('click', game.gameStart);
+  $('#sign-out').on('click', onSignOut);
 };
 module.exports = {
   addHandlers,

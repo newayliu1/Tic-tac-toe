@@ -7,15 +7,12 @@ const config = require('./config');
 
 $(() => {
   setAPIOrigin(location, config);
+
 });
 
-
-
-
-// use require without a reference to ensure a file is bundled
-// require('./example');
-
 const authEvents = require('./auth/events.js');
+const game = require('./game/game_events.js');
 $(() => {
-  authEvents.addHandlers();
+  authEvents.addHandlers(); //handlers for authenication
+  game.addHandlers(); //handlers for game
 });

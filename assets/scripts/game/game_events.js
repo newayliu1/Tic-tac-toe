@@ -51,11 +51,8 @@ const click_event = function(event) {
     $(event.target).text(currentPlayer.sign);
     onClick(index);
     let data = game.patch_data(index, currentPlayer.sign, gameEnd);
-    console.log(data);
-    api.updateCells(data, board.id)
-      .then(ui.success)
-      .catch(ui.failure);
-    api.getGame(board.id);
+    api.updateCells(data, board.id);
+      api.getGame(board.id);
     switchPlayer();
   }
 };
@@ -74,15 +71,44 @@ const gameStart = function(event) {
       .then((response) => {
         game.board = response;
         board = game.board.game;
+        console.log(response);
       });
 
     currentPlayer = player.playerOne;
     emptyBoard();
     gameEnd = false;
+    ui.createGameSuccess();
+    $('.result-display').text('');
   }
 };
 
 
+
+// Sign selected by player
+const assignSign = function(signValue) {
+  player.playerOne.sign = signValue;
+  if (signValue === 'x') {
+    player.playerTwo.sign = 'o';
+  } else {
+    player.playerTwo.sign = 'x';
+  }
+};
+
+const onSigningPlayer = function(event) {
+  event.preventDefault();
+  assignSign(event.target.id);
+  ui.selectedRole();
+
+};
+
+
+const addHandlers = () => {
+  $('#x').on('click', onSigningPlayer);
+  $('#o').on('click', onSigningPlayer);
+  $('#start-button').on('click', gameStart);
+};
+
+
 module.exports = {
-  gameStart,
+  addHandlers,
 };

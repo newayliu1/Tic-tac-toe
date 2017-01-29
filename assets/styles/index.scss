@@ -23,9 +23,10 @@ h1 {
   float: right;
 }
 
-.board{
+.board {
   position: relative;
 }
+
 .start-game-button {
   // display: inline-block;
   position: absolute;
@@ -33,9 +34,9 @@ h1 {
 }
 
 .result-display {
-  text-align: center;
   font: 50 px;
-  border: 20px;
+  border: 20px,solid,red;
+  text-align: center;
 }
 
 .x {
