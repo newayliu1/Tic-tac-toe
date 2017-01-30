@@ -39,8 +39,13 @@ buttons and the game board will be showed in my final game page.
 Testing and knowing the format to patch took the most of my time to figure out. I still try to
 figure out the way to update the user information. The api still response me back the 400 error.
 
-## WireFrame
+## Unsolved Problem
+- update user side on api
+- decorate user interface
+- show the current player info during game
 
+## WireFrame
+[Teleport to My wireframe](http://imgur.com/uWKU8ki)
 
 ## User Story
 
