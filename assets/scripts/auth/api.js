@@ -70,9 +70,9 @@ const updateGame = function (data,id) {
   });
 };
 
-const getGame = function (id) {
+const getGame = function () {
   return $.ajax({
-    url: `${config.apiOrigin}/games/${id}`,
+    url: `${config.apiOrigin}/games`,
     method: 'GET',
     headers: {
       Authorization: `Token token=${player.playerOne.token}`,

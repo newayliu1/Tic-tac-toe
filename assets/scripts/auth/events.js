@@ -13,7 +13,7 @@ const onSignUp = function (event) {
   let data = getFormFields(event.target);
 
   api.signUp(data)
-    .then(ui.success)
+    .then(ui.signUpSuccess)
     .catch(ui.failure);
 
 };
@@ -38,7 +38,7 @@ const onChangePassword = function (event) {
   let data = getFormFields(event.target);
 
   api.changePassword(data)
-    .then(ui.success)
+    .then(ui.changePasswordSuccess)
     .catch(ui.failure)
     ;
 };
@@ -64,7 +64,7 @@ const addHandlers = () => {
     $('#board').hide();
     $('#game-log').hide();
     $('#sign-out').hide();
-    $('#change-password').hide();
+    $('.change-password').hide();
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);

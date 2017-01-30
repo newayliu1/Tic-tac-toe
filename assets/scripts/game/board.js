@@ -3,6 +3,7 @@
 let board = {
 };
 
+let games ={};
 //patch_data save the formate of patch data
 let patch_data = function(index, sign, isEnd) {
   return {
@@ -17,5 +18,6 @@ let patch_data = function(index, sign, isEnd) {
 };
 module.exports = {
   board,
-  patch_data
+  patch_data,
+  games
 };

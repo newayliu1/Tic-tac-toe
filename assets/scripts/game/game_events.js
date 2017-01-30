@@ -52,7 +52,6 @@ const click_event = function(event) {
     onClick(index);
     let data = game.patch_data(index, currentPlayer.sign, gameEnd);
     api.updateCells(data, board.id);
-      api.getGame(board.id);
     switchPlayer();
   }
 };
@@ -71,9 +70,9 @@ const gameStart = function(event) {
       .then((response) => {
         game.board = response;
         board = game.board.game;
-        console.log(response);
       });
-
+      api.getGame()
+      .then(ui.showGameSuccess);
     currentPlayer = player.playerOne;
     emptyBoard();
     gameEnd = false;

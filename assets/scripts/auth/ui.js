@@ -8,7 +8,13 @@ const failure = (error) => {
   console.error(error);
 };
 
+const changePasswordSuccess = () =>{
+$('#change-password').hide();
+};
 
+const signUpSuccess = () =>{
+$('#sign-up').hide();
+};
 
 const signInSuccess = () => {
   $('.sign-up').val('');
@@ -17,12 +23,14 @@ const signInSuccess = () => {
   $('#sign-in').hide();
   $('#new-game').show();
   $('#game-log').show();
-  $('#change-password').show();
+  $('.change-password').show();
   $('#sign-out').show();
    $('#board').show();
    $('#x').hide();
    $('#o').hide();
    $('.container').hide();
+   $('.result-display').show();
+   $('.games-played').show();
   // if (data) {
   //   console.log(data);
   // }
@@ -30,13 +38,14 @@ const signInSuccess = () => {
 
 const signOutSuccess = () => {
   $('#sign-out').hide();
-  $('#change-password').hide();
+  $('.change-password').hide();
   $('#new-game').hide();
   $('#game-log').hide();
   $('#board').hide();
-  $('.games-played').hide().val('');
+  $('.games-played').hide().text('');
+  $('.result-display').hide().text('');
   $('#sign-in').show();
-  $('#sign-up').show();
+  $('.sign-up').show();
   // if (data) {
   //   console.log(data);
   // }
@@ -56,7 +65,6 @@ const createGameSuccess = () => {
 };
 
 const showGameSuccess = (data) => {
-  $('.games-played').show();
   $('.games-played').text('You\'ve played ' + data.games.length + ' times!');
   // if (data) {
   //   console.log(data);
@@ -71,4 +79,6 @@ module.exports = {
   createGameSuccess,
   showGameSuccess,
   selectedRole,
+  changePasswordSuccess,
+  signUpSuccess,
 };
