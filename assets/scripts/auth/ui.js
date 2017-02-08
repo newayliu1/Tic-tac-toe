@@ -41,8 +41,8 @@ const signOutSuccess = () => {
   // $('#new-game').hide();
   // $('#game-log').hide();
   $('#board').hide();
-  $('.games-played').hide().text('');
-  $('.result-display').hide().text('');
+  $('.games-played').text('');
+  $('.result-display').text('');
   $('.sign-in').show();
   $('.sign-up').show();
   // if (data) {
