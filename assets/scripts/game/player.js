@@ -5,7 +5,7 @@ let playerOne = {
 };
 let playerTwo = {
   id: null,
-  email: 'guess',
+  email: 'guest',
 };
 
 

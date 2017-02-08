@@ -60,25 +60,26 @@ const click_event = function(event) {
 const emptyBoard = function() {
   $('.box').text('');
   $('.box').on('click', click_event);
+  $('.container').hide();
 };
 
-//
+// Hide the game start button
 const gameStart = function(event) {
   event.preventDefault();
-  if (gameEnd) {
+  // if (gameEnd) {
+    api.getGame()
+      .then(ui.showGameSuccess);
     api.addGame()
       .then((response) => {
         game.board = response;
         board = game.board.game;
       });
-      api.getGame()
-      .then(ui.showGameSuccess);
     currentPlayer = player.playerOne;
     emptyBoard();
     gameEnd = false;
     ui.createGameSuccess();
     $('.result-display').text('');
-  }
+  // }
 };
 
 
@@ -91,13 +92,14 @@ const assignSign = function(signValue) {
   } else {
     player.playerTwo.sign = 'x';
   }
+
 };
 
 const onSigningPlayer = function(event) {
   event.preventDefault();
   assignSign(event.target.id);
   ui.selectedRole();
-
+  ui.offXO();
 };
 
 
