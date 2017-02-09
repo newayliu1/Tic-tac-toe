@@ -28,7 +28,7 @@ const onClick = function(index) {
   winner = gameStatus.winner(board.cells, currentPlayer);
   gameEnd = gameStatus.isEnd(board.cells, currentPlayer);
   if (winner) {
-    $('.result-display').text('Congradulation ' + winner.email);
+    $('.result-display').text('Congratulation ' + winner.email);
     $('.container').off('click');
   } else if (gameEnd) {
     $('.result-display').text('Tie!!!!!!!!!!');

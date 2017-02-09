@@ -1,7 +1,6 @@
 'use strict';
 
-const success = (data) => {
-  if (data) { console.log(data); }
+const success = () => {
 };
 
 const failure = () => {
@@ -21,7 +20,7 @@ $('.result-display').text('Sign Up Successfully!');
 const signInSuccess = () => {
   $('.sign-up').val('');
   $('.sign-in').val('');
-  // $('#sign-up').hide();
+  $('.sign-up').hide();
   $('.sign-in').hide();
   $('#new-game').show();
   $('#game-log').show();
@@ -45,6 +44,7 @@ const signOutSuccess = () => {
   $('.games-played').text('');
   $('.result-display').text('');
   $('.sign-in').show();
+  $('.sign-up').show();
   // $('.sign-up').show();
   // if (data) {
   //   console.log(data);
