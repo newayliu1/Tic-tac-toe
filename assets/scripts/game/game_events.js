@@ -33,6 +33,9 @@ const onClick = function(index) {
   } else if (gameEnd) {
     $('.result-display').text('Tie!!!!!!!!!!');
   }
+  if (gameEnd) {
+    $('#start-button').show();
+  }
   unativeClick();
 };
 
@@ -61,6 +64,7 @@ const emptyBoard = function() {
   $('.box').text('');
   $('.box').on('click', click_event);
   $('.container').hide();
+  $('#start-button').hide();
 };
 
 // Hide the game start button

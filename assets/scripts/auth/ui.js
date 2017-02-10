@@ -38,7 +38,7 @@ const signInSuccess = () => {
 const signOutSuccess = () => {
   $('#sign-out').hide();
   $('.change-password').hide();
-  // $('#new-game').hide();
+  $('#start-button').show();
   // $('#game-log').hide();
   $('#board').hide();
   $('.games-played').text('');
