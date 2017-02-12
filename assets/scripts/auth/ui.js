@@ -10,16 +10,18 @@ const failure = () => {
 const changePasswordSuccess = () =>{
 // $('#change-password').hide();
 $('.result-display').text('Change Password Successfully!');
+$('.input-field').val('');
 };
 
 const signUpSuccess = () =>{
 // $('#signUp-form').hide();
 $('.result-display').text('Sign Up Successfully!');
+$('.input-field').val('');
 };
 
 const signInSuccess = () => {
   $('.sign-up').val('');
-  $('.sign-in').val('');
+  $('.input-field').val('');
   $('.sign-up').hide();
   $('.sign-in').hide();
   $('#new-game').show();
