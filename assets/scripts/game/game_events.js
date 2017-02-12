@@ -111,6 +111,8 @@ const addHandlers = () => {
   $('#x').on('click', onSigningPlayer);
   $('#o').on('click', onSigningPlayer);
   $('#start-button').on('click', gameStart);
+  $('#start-button').hide();
+  ui.offXO();
 };
 
 
